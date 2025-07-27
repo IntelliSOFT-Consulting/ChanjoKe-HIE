@@ -1,0 +1,68 @@
+# HIE Domain Configuration
+# ======================
+
+# Main HIE Domain (for provider app, patient app, OpenHIM console)
+HIE_DOMAIN=chanjo-provider.yourdomain.com
+
+# Keycloak Authentication Domain
+KEYCLOAK_DOMAIN=chanjo-auth.yourdomain.com
+
+# Data Pipes/Reports Domain
+DATA_PIPES_DOMAIN=chanjo-reports.yourdomain.com
+
+# OpenHIM API Domain (for backend services)
+OPENHIM_API_DOMAIN=chanjoke.yourdomain.com
+
+# SSL Certificate Configuration
+# ============================
+SSL_CERT_PATH=./certs/star.yourdomain.com.crt
+SSL_KEY_PATH=./certs/star.yourdomain.com.key
+
+# Database Configuration
+# =====================
+
+# HAPI FHIR Database
+HAPI_DB_USER=postgres
+HAPI_DB_PASSWORD=hapi123
+HAPI_DB_NAME=hapi
+
+# Keycloak Database  
+KEYCLOAK_DB_USER=postgres
+KEYCLOAK_DB_PASSWORD=keycloak_not_123
+KEYCLOAK_DB_NAME=keycloak
+
+# MongoDB (OpenHIM)
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=admin123
+
+# Application Configuration
+# ========================
+
+# Keycloak
+KEYCLOAK_ADMIN=admin
+KEYCLOAK_ADMIN_PASSWORD=admin123
+KEYCLOAK_REALM=master
+KEYCLOAK_CLIENT_ID=openhim-oauth
+
+# ChanjoKe Auth Service
+CHANJOKE_AUTH_JWT_SECRET=your-jwt-secret-key-here
+CHANJOKE_AUTH_DB_URL=postgresql://postgres:hapi123@hapi-fhir-postgres:5432/hapi
+
+# Web Applications
+VITE_SERVER_BASE_URL=https://chanjo-provider.yourdomain.com/auth
+VITE_SUPERSET_DOMAIN=https://chanjo-reports.yourdomain.com
+VITE_DASHBOARD_ID=your-dashboard-id
+
+# Data Pipes Configuration
+# =======================
+FHIR_SERVER_URL=http://hapi-fhir-jpa:8080/fhir
+DWH_ROOT_PREFIX=/dwh/controller_DWH
+RESOURCE_LIST=Patient,Encounter,Observation,Questionnaire,Condition,Practitioner,Location,Organization,Immunization,ServiceRequest,ImmunizationRecommendation
+
+# Network Configuration
+# ====================
+DOCKER_NETWORK=cloudbuild
+
+# Optional: Development vs Production
+ENVIRONMENT=production
+NODE_ENV=production 

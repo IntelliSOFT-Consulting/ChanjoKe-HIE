@@ -1,0 +1,8 @@
+# Web Application Environment Variables
+# Generated automatically by deploy-hie.sh
+
+VITE_SERVER_BASE_URL={{VITE_SERVER_BASE_URL}}
+VITE_SUPERSET_DOMAIN={{VITE_SUPERSET_DOMAIN}}
+VITE_DASHBOARD_ID={{VITE_DASHBOARD_ID}}
+NODE_ENV={{NODE_ENV}}
+ENVIRONMENT={{ENVIRONMENT}} 

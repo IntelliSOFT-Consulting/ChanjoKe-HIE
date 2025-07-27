@@ -1,0 +1,19 @@
+{
+  "version": "1.18.2",
+  "minimumCoreVersion": "5.2.0",
+  "protocol": "https",
+  "host": "{{OPENHIM_API_DOMAIN}}",
+  "hostPath": "/openhim-api",
+  "port": "",
+  "title": "ChanjoKE HIM Console",
+  "footerTitle": "OpenHIM Administration Console",
+  "footerPoweredBy": "<a href='http://openhim.org/' target='_blank'>Powered by OpenHIM</a>",
+  "loginBanner": "",
+  "mediatorLastHeartbeatWarningSeconds": 60,
+  "mediatorLastHeartbeatDangerSeconds": 120,
+  "showLoginForm": true,
+  "ssoEnabled": true,
+  "keyCloakUrl": "https://{{KEYCLOAK_DOMAIN}}",
+  "keyCloakRealm": "{{KEYCLOAK_REALM}}",
+  "keyCloakClientId": "{{KEYCLOAK_CLIENT_ID}}"
+} 
