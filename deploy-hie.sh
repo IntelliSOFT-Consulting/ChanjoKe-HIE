@@ -194,7 +194,7 @@ show_status() {
     echo ""
     echo -e "🌐 Main HIE (Provider/Patient Apps): ${GREEN}https://${HIE_DOMAIN}${NC}"
     echo -e "🔐 Keycloak (Identity Management):    ${GREEN}https://${KEYCLOAK_DOMAIN}${NC}"
-    echo -e "📊 Data Pipeline (Reports):           ${GREEN}https://${DATA_PIPES_DOMAIN}${NC}"
+    echo -e "📊 Data Pipeline (Reports):           ${GREEN}https://${DATA_PIPES_DOMAIN}${NC} ${YELLOW}(optional)${NC}"
     echo -e "🔧 OpenHIM API:                       ${GREEN}https://${OPENHIM_API_DOMAIN}/openhim-api${NC}"
     echo ""
     echo -e "📋 Provider App:     ${GREEN}https://${HIE_DOMAIN}/provider/${NC}"
@@ -254,6 +254,9 @@ main() {
     
     echo ""
     print_status "HIE deployment completed successfully! 🎉"
+    echo ""
+    echo -e "${YELLOW}📊 Optional: Enable Data Pipeline${NC}"
+    echo "  ./enable-data-pipeline.sh"
     echo ""
     echo "To stop the HIE:"
     echo "  ./deploy-hie.sh stop"

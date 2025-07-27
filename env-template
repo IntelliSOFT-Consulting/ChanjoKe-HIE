@@ -2,21 +2,21 @@
 # ======================
 
 # Main HIE Domain (for provider app, patient app, OpenHIM console)
-HIE_DOMAIN=chanjo-provider.yourdomain.com
+HIE_DOMAIN=chanjo-provider.intellisoftkenya.com
 
 # Keycloak Authentication Domain
-KEYCLOAK_DOMAIN=chanjo-auth.yourdomain.com
+KEYCLOAK_DOMAIN=chanjo-auth.intellisoftkenya.com
 
 # Data Pipes/Reports Domain
-DATA_PIPES_DOMAIN=chanjo-reports.yourdomain.com
+DATA_PIPES_DOMAIN=chanjo-reports.intellisoftkenya.com
 
 # OpenHIM API Domain (for backend services)
-OPENHIM_API_DOMAIN=chanjoke.yourdomain.com
+OPENHIM_API_DOMAIN=chanjo-client.intellisoftkenya.com
 
 # SSL Certificate Configuration
 # ============================
-SSL_CERT_PATH=./certs/star.yourdomain.com.crt
-SSL_KEY_PATH=./certs/star.yourdomain.com.key
+SSL_CERT_PATH=./certs/star.intellisoftkenya.com.crt
+SSL_KEY_PATH=./certs/star.intellisoftkenya.com.key
 
 # Database Configuration
 # =====================

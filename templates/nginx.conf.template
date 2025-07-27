@@ -174,7 +174,7 @@ http {
     }
   }
 
-  # Data pipeline/Reports
+  # Data pipeline/Reports (optional - only if pipeline-controller is enabled)
   server {
     listen 443 ssl;
     server_name {{DATA_PIPES_DOMAIN}};
@@ -183,11 +183,23 @@ http {
     ssl_certificate_key {{SSL_KEY_PATH}};
 
     location / {
-      proxy_pass http://pipeline-controller:8080/;
+      # Check if pipeline-controller service is available
+      resolver 127.0.0.11 valid=30s;
+      set $upstream pipeline-controller:8080;
+      proxy_pass http://$upstream/;
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header X-Forwarded-Proto $scheme;
+      
+      # Fallback page if pipeline service is not available
+      error_page 502 503 504 = @pipeline_unavailable;
+    }
+    
+    location @pipeline_unavailable {
+      internal;
+      return 503 "Data Pipeline service is not currently available. Enable it in docker-compose.unified.yml to access reports.";
+      add_header Content-Type text/plain;
     }
   }
 } 

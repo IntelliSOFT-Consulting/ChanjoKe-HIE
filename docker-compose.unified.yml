@@ -177,24 +177,46 @@ services:
       - "3003:3000"
 
   # ==========================================
-  # DATA PIPELINE SERVICES
+  # DATA PIPELINE SERVICES (OPTIONAL)
   # ==========================================
-
-  pipeline-controller:
-    image: us-docker.pkg.dev/fhir-org-starter-project/fhir-pipelines/controller:latest
-    container_name: pipeline-controller
-    restart: unless-stopped
-    networks:
-      - cloudbuild
-    ports:
-      - "8085:8080"
-    volumes:
-      - ./generated-configs/data-pipes:/workspace/config
-      - dwh-data:/dwh
-    depends_on:
-      - hapi-fhir-jpa
-    environment:
-      SPRING_CONFIG_LOCATION: /workspace/config/application.yaml
+  #
+  # OPTION 1: Build from source (recommended)
+  # Uncomment the section below to build the data pipeline controller locally
+  #
+  # pipeline-controller:
+  #   build:
+  #     context: ./fhir-data-pipes
+  #     dockerfile: Dockerfile
+  #   container_name: pipeline-controller
+  #   restart: unless-stopped
+  #   networks:
+  #     - cloudbuild
+  #   ports:
+  #     - "8085:8080"
+  #   volumes:
+  #     - ./generated-configs/data-pipes:/app/config
+  #     - dwh-data:/dwh
+  #   depends_on:
+  #     - hapi-fhir-jpa
+  #   environment:
+  #     SPRING_CONFIG_LOCATION: /app/config/application.yaml
+  #
+  # OPTION 2: Use pre-built image (if you have access to Google Cloud)
+  # pipeline-controller:
+  #   image: us-docker.pkg.dev/fhir-org-starter-project/fhir-pipelines/controller:latest
+  #   container_name: pipeline-controller
+  #   restart: unless-stopped
+  #   networks:
+  #     - cloudbuild
+  #   ports:
+  #     - "8085:8080"
+  #   volumes:
+  #     - ./generated-configs/data-pipes:/workspace/config
+  #     - dwh-data:/dwh
+  #   depends_on:
+  #     - hapi-fhir-jpa
+  #   environment:
+  #     SPRING_CONFIG_LOCATION: /workspace/config/application.yaml
 
   # ==========================================
   # PROXY SERVICE
@@ -221,3 +243,4 @@ services:
       - client
       - keycloak
       - chanjoke-auth
+      # - pipeline-controller  # Uncomment if enabling data pipeline
